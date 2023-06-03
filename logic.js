@@ -35,53 +35,53 @@ function addBookToLibrary() {
     myLibrary.push(newBook);
 }
 
-function displayBooks() {
+// function displayBooks() {
     
-    let table = document.createElement("table");
-    let headerRow = document.createElement("tr");
+//     let table = document.createElement("table");
+//     let headerRow = document.createElement("tr");
 
-    let titleHeader = document.createElement("th");
-    titleHeader.textContent = "Title";
-    headerRow.appendChild(titleHeader);
+//     let titleHeader = document.createElement("th");
+//     titleHeader.textContent = "Title";
+//     headerRow.appendChild(titleHeader);
 
-    let authorHeader = document.createElement("th");
-    authorHeader.textContent = "Author";
-    headerRow.appendChild(authorHeader);
+//     let authorHeader = document.createElement("th");
+//     authorHeader.textContent = "Author";
+//     headerRow.appendChild(authorHeader);
 
-    let pagesHeader = document.createElement("th");
-    pagesHeader.textContent = "Pages";
-    headerRow.appendChild(pagesHeader);
+//     let pagesHeader = document.createElement("th");
+//     pagesHeader.textContent = "Pages";
+//     headerRow.appendChild(pagesHeader);
 
-    let readHeader = document.createElement("th");
-    readHeader.textContent = "Read";
-    headerRow.appendChild(readHeader);
+//     let readHeader = document.createElement("th");
+//     readHeader.textContent = "Read";
+//     headerRow.appendChild(readHeader);
 
-    table.appendChild(headerRow);
+//     table.appendChild(headerRow);
 
-    for (let i = 0; i < myLibrary.length; i++) {
-        let row = document.createElement("tr");
+//     for (let i = 0; i < myLibrary.length; i++) {
+//         let row = document.createElement("tr");
 
-        let titleCell = document.createElement("td");
-        titleCell.textContent = myLibrary[i].title;
-        row.appendChild(titleCell);
+//         let titleCell = document.createElement("td");
+//         titleCell.textContent = myLibrary[i].title;
+//         row.appendChild(titleCell);
 
-        let authorCell = document.createElement("td");
-        authorCell.textContent = myLibrary[i].author;
-        row.appendChild(authorCell);
+//         let authorCell = document.createElement("td");
+//         authorCell.textContent = myLibrary[i].author;
+//         row.appendChild(authorCell);
 
-        let pagesCell = document.createElement("td");
-        pagesCell.textContent = myLibrary[i].pages;
-        row.appendChild(pagesCell);
+//         let pagesCell = document.createElement("td");
+//         pagesCell.textContent = myLibrary[i].pages;
+//         row.appendChild(pagesCell);
 
-        let readCell = document.createElement("td");
-        readCell.textContent = myLibrary[i].read ? "Yes" : "No";
-        row.appendChild(readCell);
+//         let readCell = document.createElement("td");
+//         readCell.textContent = myLibrary[i].read ? "Yes" : "No";
+//         row.appendChild(readCell);
 
-        table.appendChild(row);
-    }
+//         table.appendChild(row);
+//     }
 
-    document.body.appendChild(table);
-}
+//     document.body.appendChild(table);
+// } 
 
 let bookOne = new Book("Harry Potter and the Philosopher's Stone", "J.K. Rowling", 223, true);
 let bookTwo = new Book("The Hobbit", "J.R.R. Tolkien", 310, false);
