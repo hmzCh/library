@@ -12,8 +12,24 @@
     
     <div id="header">
         <h1>Library</h1>
-        <button id="addBook">+ Add Book</button>
+        <button id="addBookButton">+ Add Book</button>
     </div>
+
+    <form id="addBookForm" >
+        
+        <h2>Add New Book</h2>
+        
+        <input placeholder="Title" id="title" name="title" type="text" required/>
+        <input placeholder="Author" id="author" name="author" type="text" required/>
+        <input placeholder="Pages" id="pages" name="pages" type="number" required min="1"/>    
+        <div id="form-checkbox">
+            <label for="read">Have you read the book?</label>
+            <input id="read" name="read" type="checkbox" required />
+        </div>
+        
+        <button id="submitButton">Submit</button>
+      
+    </form>
 
 </body>
 </html>

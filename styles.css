@@ -6,8 +6,6 @@
 
 body{
     font-family: roboto, sans-serif;
-    display: grid;
-    grid-template-rows: 1fr 10fr;
     background-color: rgb(231, 231, 231);
 }
 
@@ -20,9 +18,7 @@ body{
     justify-content: space-between;
 }
 
-
-
-#addBook {
+button {
     width: 150px;
     height: 50px;
     background-color: rgb(231, 231, 231);
@@ -33,6 +29,47 @@ body{
     font-weight: bolder;
 }
 
-#addBook:hover {
+button:hover {
     background-color: rgb(215, 215, 215);
+}
+
+
+form {
+    margin: 50px;
+    padding: 20px;
+    width: 350px;
+    height: 450px;
+    border-radius: 10px;
+    background-color: rgb(247, 247, 247);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+input {
+    width: 260px;
+    height: 50px;
+    font-size: 24px;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+}
+
+input[type="checkbox"] {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+}
+
+#form-checkbox {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+}
+
+#submitButton {
+    width: 260px;
+    height: 50px;
 }
