@@ -86,14 +86,24 @@ myLibrary.push(bookThree);
 
 displayBooks();
 
-var addBookButton = document.querySelector("#addBookButton");
-var addBookForm = document.querySelector("#addBookForm");
-var submitButton = document.querySelector("#submitButton");
+let addBookButton = document.querySelector("#addBookButton");
+let addBookForm = document.querySelector("#addBookForm");
+let submitButton = document.querySelector("#submitButton");
+let overlay = document.querySelector('#overlay');
 
 addBookButton.addEventListener("click", function() {
-    addBookForm.style.visibility = "visible";
+    toggleForm("visible");
 });
 
 submitButton.addEventListener("click", function() {
-    addBookForm.style.visibility = "hidden";
+    toggleForm("hidden");
 });
+
+overlay.addEventListener("click", function() {
+    toggleForm("hidden");
+});
+
+function toggleForm(status) {
+    addBookForm.style.visibility = status;
+    overlay.style.visibility = status;
+}
