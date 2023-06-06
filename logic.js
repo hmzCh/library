@@ -35,53 +35,46 @@ function addBookToLibrary() {
     myLibrary.push(newBook);
 }
 
-// function displayBooks() {
+function displayBooks() {
     
-//     let table = document.createElement("table");
-//     let headerRow = document.createElement("tr");
+    myLibrary.forEach(Book => {
+        
+        const card = document.createElement('div');
+        card.classList.add('card');
 
-//     let titleHeader = document.createElement("th");
-//     titleHeader.textContent = "Title";
-//     headerRow.appendChild(titleHeader);
+        const title = document.createElement('div');
+        title.classList.add('title');
+        title.textContent = Book.title;
+        card.appendChild(title);
+      
+        const author = document.createElement('div');
+        author.classList.add('author');
+        author.textContent = Book.author;
+        card.appendChild(author);
+      
+        const pages = document.createElement('div');
+        pages.classList.add('pages');
+        pages.textContent = Book.pages + ' pages';
+        card.appendChild(pages);
 
-//     let authorHeader = document.createElement("th");
-//     authorHeader.textContent = "Author";
-//     headerRow.appendChild(authorHeader);
+        const read = document.createElement('button');
+        read.classList.add('readButton');
+        if (Book.read === true) {;
+            read.textContent = 'Read';            
+        } else {;
+            read.textContent = 'Not Read'  ;
+        };
+        card.appendChild(read);
 
-//     let pagesHeader = document.createElement("th");
-//     pagesHeader.textContent = "Pages";
-//     headerRow.appendChild(pagesHeader);
+        const remove = document.createElement('button');
+        remove.classList.add('removeButton')
+        remove.textContent = 'Remove'
+        card.appendChild(remove)
+      
+        cards.appendChild(card);
+    });
 
-//     let readHeader = document.createElement("th");
-//     readHeader.textContent = "Read";
-//     headerRow.appendChild(readHeader);
-
-//     table.appendChild(headerRow);
-
-//     for (let i = 0; i < myLibrary.length; i++) {
-//         let row = document.createElement("tr");
-
-//         let titleCell = document.createElement("td");
-//         titleCell.textContent = myLibrary[i].title;
-//         row.appendChild(titleCell);
-
-//         let authorCell = document.createElement("td");
-//         authorCell.textContent = myLibrary[i].author;
-//         row.appendChild(authorCell);
-
-//         let pagesCell = document.createElement("td");
-//         pagesCell.textContent = myLibrary[i].pages;
-//         row.appendChild(pagesCell);
-
-//         let readCell = document.createElement("td");
-//         readCell.textContent = myLibrary[i].read ? "Yes" : "No";
-//         row.appendChild(readCell);
-
-//         table.appendChild(row);
-//     }
-
-//     document.body.appendChild(table);
-// } 
+} 
 
 let bookOne = new Book("Harry Potter and the Philosopher's Stone", "J.K. Rowling", 223, true);
 let bookTwo = new Book("The Hobbit", "J.R.R. Tolkien", 310, false);
@@ -92,3 +85,15 @@ myLibrary.push(bookTwo);
 myLibrary.push(bookThree);
 
 displayBooks();
+
+var addBookButton = document.querySelector("#addBookButton");
+var addBookForm = document.querySelector("#addBookForm");
+var submitButton = document.querySelector("#submitButton");
+
+addBookButton.addEventListener("click", function() {
+    addBookForm.style.visibility = "visible";
+});
+
+submitButton.addEventListener("click", function() {
+    addBookForm.style.visibility = "hidden";
+});
