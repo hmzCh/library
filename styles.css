@@ -12,7 +12,7 @@ body{
 #header {
     background-color: rgb(247, 247, 247);
     box-shadow: 0 10px 9px rgba(203, 203, 203, 0.5);
-    padding: 20px 50px 20px 50px;
+    padding: 20px 100px 20px 100px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -46,6 +46,10 @@ form {
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+
+    position: relative;
+    margin: 100px auto;
+ 
 }
 
 input {
@@ -72,4 +76,41 @@ input[type="checkbox"] {
 #submitButton {
     width: 260px;
     height: 50px;
+}
+
+#cards {
+    padding: 50px;
+    gap: 50px;
+
+    /* display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around; */
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 300px);
+    justify-content: center;
+}
+
+.card {
+    width: 300px;
+    height: 300px;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 18px;
+    text-align: center;
+    background-color: rgb(247, 247, 247);
+    box-shadow: 0 10px 9px rgba(203, 203, 203, 0.8);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.title {
+    font-weight: bold;
+}
+
+.readButton, .removeButton {
+    width: 100%;
 }
