@@ -1,5 +1,33 @@
 let myLibrary = [];
 
+let addBookButton = document.querySelector("#addBookButton");
+addBookButton.addEventListener("click", function() {
+    toggleForm("visible");
+});
+
+let addBookForm = document.querySelector("#addBookForm");
+addBookForm.addEventListener('submit', (event) => {
+    event.preventDefault(); //Needed as the submit input tries to send the data to a server by default
+
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    const pages = document.getElementById('pages').value;
+    const read = document.getElementById('read').checked;
+  
+    const newBook = new Book(title, author, pages, read);
+    myLibrary.push(newBook);
+    event.target.reset(); //Resets the form fields
+    toggleForm("hidden");
+    displayBooks();
+});
+
+let overlay = document.querySelector('#overlay');
+overlay.addEventListener("click", function() {
+    toggleForm("hidden");
+});
+
+createDefaultBooks()
+
 function Book(title, author, pages, read) {
     
     this.title = title;
@@ -18,7 +46,7 @@ function Book(title, author, pages, read) {
 
 }
 
-function addBookToLibrary() {
+function addBookToLibrary() { //Not needed anymore
     
     let title = prompt("Enter the book title");
     let author = prompt("Enter the author's name");
@@ -33,6 +61,18 @@ function addBookToLibrary() {
 
     let newBook = new Book(title, author, pages, read);
     myLibrary.push(newBook);
+}
+
+function createDefaultBooks() {
+    let bookOne = new Book("Harry Potter and the Philosopher's Stone", "J.K. Rowling", 223, true);
+    let bookTwo = new Book("The Hobbit", "J.R.R. Tolkien", 310, false);
+    let bookThree = new Book("To Kill a Mockingbird", "Harper Lee", 281, true);
+    
+    myLibrary.push(bookOne);
+    myLibrary.push(bookTwo);
+    myLibrary.push(bookThree);
+    
+    displayBooks();
 }
 
 function displayBooks() {
@@ -89,50 +129,6 @@ function displayBooks() {
   });
 }
 
-let bookOne = new Book("Harry Potter and the Philosopher's Stone", "J.K. Rowling", 223, true);
-let bookTwo = new Book("The Hobbit", "J.R.R. Tolkien", 310, false);
-let bookThree = new Book("To Kill a Mockingbird", "Harper Lee", 281, true);
-
-myLibrary.push(bookOne);
-myLibrary.push(bookTwo);
-myLibrary.push(bookThree);
-
-displayBooks();
-
-let addBookButton = document.querySelector("#addBookButton");
-let addBookForm = document.querySelector("#addBookForm");
-// let submitButton = document.querySelector("#submitButton");
-let overlay = document.querySelector('#overlay');
-
-
-addBookButton.addEventListener("click", function() {
-    toggleForm("visible");
-});
-
-addBookForm.addEventListener('submit', (event) => {
-    event.preventDefault(); //Needed as the submit input tries to send the data to a server by default
-
-    const title = document.getElementById('title').value;
-    const author = document.getElementById('author').value;
-    const pages = document.getElementById('pages').value;
-    const read = document.getElementById('read').checked;
-  
-    const newBook = new Book(title, author, pages, read);
-    myLibrary.push(newBook);
-    event.target.reset(); //Resets the form fields
-    toggleForm("hidden");
-    displayBooks();
-});
-
-overlay.addEventListener("click", function() {
-    toggleForm("hidden");
-});
-
-function toggleForm(status) {
-    addBookForm.style.visibility = status;
-    overlay.style.visibility = status;
-}
-
 function removeBook(bookIndex) {
     // Remove book from myLibrary array
     myLibrary.splice(bookIndex, 1);
@@ -161,4 +157,9 @@ function toggleReadStatus(book, button) {
 	} else {
 		button.textContent = 'Not Read';
 	}
+}
+
+function toggleForm(status) {
+    addBookForm.style.visibility = status;
+    overlay.style.visibility = status;
 }
