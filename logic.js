@@ -36,6 +36,11 @@ function addBookToLibrary() {
 }
 
 function displayBooks() {
+
+    var elements = document.querySelectorAll('div.card'); //This piece of code removes all the cards first
+    elements.forEach(function(element) {
+        element.parentNode.removeChild(element);
+    });
     
     myLibrary.forEach(Book => {
         
@@ -88,15 +93,26 @@ displayBooks();
 
 let addBookButton = document.querySelector("#addBookButton");
 let addBookForm = document.querySelector("#addBookForm");
-let submitButton = document.querySelector("#submitButton");
+// let submitButton = document.querySelector("#submitButton");
 let overlay = document.querySelector('#overlay');
 
 addBookButton.addEventListener("click", function() {
     toggleForm("visible");
 });
 
-submitButton.addEventListener("click", function() {
+addBookForm.addEventListener('submit', (event) => {
+    event.preventDefault(); //Needed as the submit input tries to send the data to a server by default
+
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    const pages = document.getElementById('pages').value;
+    const read = document.getElementById('read').checked;
+  
+    const newBook = new Book(title, author, pages, read);
+    myLibrary.push(newBook);
+    event.target.reset(); //Resets the form fields
     toggleForm("hidden");
+    displayBooks();
 });
 
 overlay.addEventListener("click", function() {
