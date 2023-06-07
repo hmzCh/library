@@ -36,52 +36,57 @@ function addBookToLibrary() {
 }
 
 function displayBooks() {
-    var elements = document.querySelectorAll('div.card'); //This piece of code removes all the cards first
-    elements.forEach(function(element) {
-      element.parentNode.removeChild(element);
-    });
-  
-    myLibrary.forEach((Book, index) => {
-      const card = document.createElement('div');
-      card.classList.add('card');
-      card.setAttribute('data-index', index);
-  
-      const title = document.createElement('div');
-      title.classList.add('title');
-      title.textContent = Book.title;
-      card.appendChild(title);
-  
-      const author = document.createElement('div');
-      author.classList.add('author');
-      author.textContent = Book.author;
-      card.appendChild(author);
-  
-      const pages = document.createElement('div');
-      pages.classList.add('pages');
-      pages.textContent = Book.pages + ' pages';
-      card.appendChild(pages);
-  
-      const read = document.createElement('button');
-      read.classList.add('readButton');
-      if (Book.read === true) {
-        read.textContent = 'Read';
-      } else {
-        read.textContent = 'Not Read';
-      }
-      card.appendChild(read);
-  
-      const remove = document.createElement('button');
-      remove.classList.add('removeButton')
-      remove.textContent = 'Remove'
-      card.appendChild(remove)
-  
-      // Add event listener to removeButton
-      remove.addEventListener('click', () => {
-        removeBook(index);
-      });
-  
-      cards.appendChild(card);
-    });
+	var elements = document.querySelectorAll('div.card'); //This piece of code removes all the cards first
+	elements.forEach(function(element) {
+		element.parentNode.removeChild(element);
+	});
+
+	myLibrary.forEach((Book, index) => {
+		const card = document.createElement('div');
+		card.classList.add('card');
+		card.setAttribute('data-index', index);
+
+		const title = document.createElement('div');
+		title.classList.add('title');
+		title.textContent = Book.title;
+		card.appendChild(title);
+
+		const author = document.createElement('div');
+		author.classList.add('author');
+		author.textContent = Book.author;
+		card.appendChild(author);
+
+		const pages = document.createElement('div');
+		pages.classList.add('pages');
+		pages.textContent = Book.pages + ' pages';
+		card.appendChild(pages);
+
+		const read = document.createElement('button');
+		read.classList.add('readButton');
+		if (Book.read === true) {
+			read.textContent = 'Read';
+		} else {
+			read.textContent = 'Not Read';
+		}
+		card.appendChild(read);
+
+		// Add event listener to readButton
+		read.addEventListener('click', () => {
+			toggleReadStatus(Book, read);
+		});
+
+		const remove = document.createElement('button');
+		remove.classList.add('removeButton')
+		remove.textContent = 'Remove'
+		card.appendChild(remove)
+
+		// Add event listener to removeButton
+		remove.addEventListener('click', () => {
+			removeBook(index);
+	});
+
+	cards.appendChild(card);
+  });
 }
 
 let bookOne = new Book("Harry Potter and the Philosopher's Stone", "J.K. Rowling", 223, true);
@@ -144,4 +149,16 @@ function removeBook(bookIndex) {
 
      // Update display
     displayBooks();
+}
+
+function toggleReadStatus(book, button) {
+	// Toggle book's read status
+	book.read = !book.read;
+
+	// Update button text
+	if (book.read === true) {
+		button.textContent = 'Read';
+	} else {
+		button.textContent = 'Not Read';
+	}
 }
