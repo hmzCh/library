@@ -26,16 +26,17 @@ overlay.addEventListener("click", function() {
     toggleForm("hidden");
 });
 
-createDefaultBooks()
-
-function Book(title, author, pages, read) {
+class Book{
     
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
+    constructor(title, author, pages, read) {
+    
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
 
-    this.info = function() {
+    info() {
         if (read==true) {
             info = (title + " by " + author + ", " + pages + " pages, read");
         } else {
@@ -43,8 +44,9 @@ function Book(title, author, pages, read) {
         }
         return info;
     }
-
 }
+
+createDefaultBooks()
 
 function addBookToLibrary() { //Not needed anymore
     
